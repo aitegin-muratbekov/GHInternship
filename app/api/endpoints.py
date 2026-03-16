@@ -1,4 +1,7 @@
-from fastapi import APIRouter
+from fastapi import APIRouter, Depends
+from sqlalchemy.orm import Session
+from app.core.database import get_db
+from app.services.user_service import UserService  
 
 router = APIRouter()
 
@@ -6,3 +9,15 @@ router = APIRouter()
 
 def say_hello():
     return {"message": "Hello World"}
+
+@router.post("/users")
+
+def register_user(username: str, password:str, db : Session = Depends(get_db)):
+    service = UserService(db)
+
+    user = service.register_user(username, password)
+
+    if not user:
+        return {"error": "User already exists"}
+        
+    return {"id": user.id, "username": user.username}

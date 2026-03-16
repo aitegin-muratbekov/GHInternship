@@ -16,3 +16,10 @@ SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 # 4. Базовый класс. От него мы будем "наследовать" наши таблицы.
 # Это связующее звено между кодом и реальными таблицами в БД.
 Base = declarative_base()
+
+def get_db():
+    db = SessionLocal()
+    try:
+        yield db
+    finally:
+        db.close()
