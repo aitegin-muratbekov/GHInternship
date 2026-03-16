@@ -1,12 +1,8 @@
- 
-from fastapi import FastAPI
+from fastapi import APIRouter
 
-app = FastAPI(title="Aitegin Project 1")
+router = APIRouter()
 
-@app.get("/hello")
+@router.get("/hello")
+
 def say_hello():
-    return {
-        "status": "success",
-        "message": "Hello from Python FastAPI!",
-        "framework_comparison": "It's like Spring Boot, but faster to write."
-    }
+    return {"message": "Hello World"}
