@@ -1,5 +1,6 @@
 from sqlalchemy.orm import Session
 from app.repository.user_repo import UserRepository
+from app.core.security import PasswordHelper
 
 # Название должно быть в точности UserService
 class UserService:
@@ -12,7 +13,7 @@ class UserService:
             return None
         
         # Имитация хеширования (позже заменим на реальное)
-        password_hash = f"hashed_{password}"
+        password_hash = PasswordHelper.hash_password(password)
         
         return self.repository.create(username, password_hash)
         

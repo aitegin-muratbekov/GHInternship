@@ -3,7 +3,11 @@ from sqlalchemy.orm import Session
 from app.core.database import get_db
 from app.services.user_service import UserService  
 
+from typing import Annotated
+from fastapi.security import OAuth2PasswordBearer
+
 router = APIRouter()
+
 
 @router.get("/hello")
 
