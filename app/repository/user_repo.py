@@ -17,6 +17,6 @@ class UserRepository:
     def create(self, username: str, password_hash: str):
         db_user = User(username=username, password_hash=password_hash)
         self.db.add(db_user)
-        self.db.commit() # В Spring это делает @Transactional
+        self.db.commit() 
         self.db.refresh(db_user)
         return db_user

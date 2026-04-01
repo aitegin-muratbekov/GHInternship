@@ -2,7 +2,7 @@ from sqlalchemy.orm import Session
 from app.models.user import User
 from app.repository.user_repo import UserRepository
 from app.core.security import PasswordHelper
-from app.schemas.user_shemas import UserCreate
+from app.schemas.user_schemas import UserCreate
 
 class UserService:
     def __init__(self, db: Session):
