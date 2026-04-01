@@ -26,5 +26,7 @@ jobs:
         pip install pytest httpx bcrypt
 
     - name: Run tests
+      env:
+        PYTHONPATH: .  # Это заставит Python видеть папку app
       run: |
         pytest
